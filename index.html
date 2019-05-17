@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>Employee Map</title>
+   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+
+   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+
+   <script src="http://localhost:8081/webpack-dev-server.js"></script>
+</head>
+
+<body>
+   <div id="map"></div>
+
+   <div id="controls">
+       <div>Instructions</div>
+       <div>Load the data and display as points on this map.</div>
+       <div id="slider">
+           <div>Filter Employees by Age</div>
+           <input type="range" min='0' max='100'>
+       </div>
+       <div id="list">
+           <div>List the currently displayed Employees' names</div>
+           <div id="emp"></div>
+       </div>
+   </div>
+   
+
+   <script src="/dist/app/bundle.js"></script>
+</body>
+
+</html>

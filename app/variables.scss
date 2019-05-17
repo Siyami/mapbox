@@ -1,0 +1,54 @@
+$appFont: 'Lato', sans-serif;
+
+// $mainGray: #50505E;
+$blueGray: #283246;
+$accentGray: #6C7680;
+$blue: #2BBEE0;
+$red: #EC1C24;
+$dark-green: #00A14B;
+$orange: #FC8F2D;
+$yellow: #ffc121;
+$green: #8bc53f;
+$purple: #7F47DD;
+$white: #ffffff;
+$placeholderGray: #cecece;
+$disabledGray: #7d7d7d;
+
+$font-sizes: (
+    null: 11pt,
+    mobile: 10pt,
+    tablet: 10pt,
+    desktop: 11pt
+);
+
+$fs-breakpoints: (
+    null: 1200px,
+    mobile: 680px,
+    tablet: 750px,
+    desktop: 1200px
+);
+
+@mixin font-size() {
+    @each $fs-breakpoint, $fs-font-size in $font-sizes {
+        @if $fs-breakpoint == null {
+            font-size: $fs-font-size;
+        }
+        @else {
+            @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+                $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint)
+            }
+            @media screen and (min-width: $fs-breakpoint) {
+                font-size: $fs-font-size;
+            }
+        }
+    }
+}
+
+
+
+// Screen sizes
+$break_h_s: 680px;
+$break_h_m: 750px;
+$break_h_l: 1200px;
+
+$break_w_s: 1200px;
