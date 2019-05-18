@@ -15,18 +15,18 @@
    <div id="map"></div>
 
    <div id="controls">
-       <div>Instructions</div>
-       <div>Load the data and display as points on this map.</div>
-       <div id="slider">
-           <div>Filter Employees by Age</div>
-           <input type="range" min='0' max='100'>
-       </div>
-       <div id="list">
-           <div>List the currently displayed Employees' names</div>
-           <div id="emp"></div>
-       </div>
+        <div id="slider">
+            <div>Filter Employees by Age</div>
+            <p id="filter-text">Show ages 30 and under</p>
+            <input id="range" type="range" min='0' max='100' value="30">
+        </div>
+        <div id="list">
+            <div>List the currently displayed Employees' names</div>
+            <div id="emp">
+
+            </div>
+        </div>
    </div>
-   
 
    <script src="/dist/app/bundle.js"></script>
 </body>

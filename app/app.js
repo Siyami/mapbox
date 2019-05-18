@@ -3,6 +3,7 @@ import './app.scss';
 let MAPBOX_TOKEN = 'pk.eyJ1IjoiaW50ZWdyYWxnaXMiLCJhIjoiY2plajNiOXAwM2RhbTJwbG45cnYyd2kycyJ9.5ayhl9GwdjpTpC1zE8A0xg';
 let MAPBOX_STYLE = 'mapbox://styles/integralgis/cjnf43ayw05dp2tn034rr5mk2';
 let people = [];
+let peopleUnderAge30 = [];
 
 mapboxgl.accessToken = MAPBOX_TOKEN;
 var map = new mapboxgl.Map({
@@ -11,10 +12,6 @@ var map = new mapboxgl.Map({
     // center: [87.485721, -22.168051],
     zoom: 1
 });
-
-var marker = new mapboxgl.Marker()
-.setLngLat([87.485721, -22.168051])
-.addTo(map);
 
 
 /////
@@ -33,11 +30,6 @@ var marker = new mapboxgl.Marker()
 //   .setPopup(popup)
 //   .addTo(map);
 
-
-function sliderChange() {
-    console.log("change");
-}
-
 function getPeople(url, success) {
     var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     xhr.open('GET', url);
@@ -49,14 +41,43 @@ function getPeople(url, success) {
     return xhr;
 }
 
+function filterList(filter) {
+    let filteredList = [];
+    let div = document.getElementById('emp');                
+
+    var child = div.lastElementChild;  
+    while (child) { 
+        div.removeChild(child); 
+        child = div.lastElementChild; 
+    } 
+
+    for(let el of people) {
+        if(el.age < filter) filteredList.push(el);
+    }
+    
+    let list = document.createElement('ul'); 
+    for(let el of filteredList) {
+        let item = document.createElement('li');
+        item.appendChild(document.createTextNode(el.name));
+        list.appendChild(item);
+    }
+    document.getElementById('emp').appendChild(list);
+}
+
+let range = document.getElementById('range');
+range.addEventListener('change', function(event) {
+    let fil = event.target.value;
+    document.getElementById('filter-text').innerText = `Show ages ${fil} and under`;
+    filterList(fil);
+});
+
 getPeople('https://cors-anywhere.herokuapp.com/https://apps.integralgis.com/node/integralgis/people.json', function(data){
     people = JSON.parse(data);
-    document.getElementById('emp').innerText = people[0].name;
     for(let el of people) {
         var marker = new mapboxgl.Marker()
         .setLngLat([el.longitude, el.latitude])
         .addTo(map);
     }
-});
 
-sliderChange();
+    filterList(30);
+});
