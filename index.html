@@ -5,29 +5,23 @@
    <meta charset="utf-8">
    <title>Employee Map</title>
    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
-
    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
-
    <script src="http://localhost:8081/webpack-dev-server.js"></script>
 </head>
 
 <body>
    <div id="map"></div>
-
    <div id="controls">
         <div id="slider">
-            <div>Filter Employees by Age</div>
-            <p id="filter-text">Show ages 30 and under</p>
+            <div>Filter Employees by Age</div>           
             <input id="range" type="range" min='0' max='100' value="30">
         </div>
+        <p id="filter-text">Employees younger than 30 years old</p>
         <div id="list">
-            <div>List the currently displayed Employees' names</div>
-            <div id="emp">
-
-            </div>
+            <!-- <div>Employees' names</div> -->
+            <div id="emp"></div>
         </div>
    </div>
-
    <script src="/dist/app/bundle.js"></script>
 </body>
 

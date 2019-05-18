@@ -171,11 +171,12 @@ select {
     height: 50%;
 
     div {
-        padding: 20px 0;
+        padding: 5px 0;
     }
 
     #slider {
         width: 100%;
+        padding-bottom: 20px;
 
         input {
             padding: 5px 0;
@@ -188,11 +189,20 @@ select {
         height: 100%;
 
         #emp {
+            color: blue;
+            padding-left: 30px;
             width: 100%;
             background-color: $placeholderGray;
-            height: 100%;
         }
     }
 
+}
+
+.mapboxgl-popup {
+    color: blue;
+}
+
+#filter-text {
+    padding-bottom: 15px;
 }
 
